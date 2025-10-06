@@ -1,1 +1,450 @@
+/* --- Global Styles and Reset --- */
+:root {
+    --primary-color: #ffe135; /* Banana Yellow */
+    --secondary-color: #2c3e50; /* Dark Blue/Charcoal */
+    --accent-color: #27ae60; /* Green */
+    --text-color: #333;
+    --white: #fff;
+    --timing-function: cubic-bezier(0.19, 1, 0.22, 1); /* Smooth 'ease-out' curve */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white);
+    /* For smooth scrolling between sections */
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Utility Classes for Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s var(--timing-function);
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.primary-btn:hover {
+    background-color: #f7d40f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+}
+
+.secondary-btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+/* --- Header and Navigation --- */
+header {
+    background-color: var(--white);
+    padding: 15px 0;
+    position: sticky; /* Sticky header for better navigation */
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+nav.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    padding: 10px 15px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Section Styling --- */
+section {
+    padding: 100px 0;
+    overflow: hidden; /* Important to hide elements before they animate in */
+}
+
+/* Alternate background colors for sections for visual separation */
+#hero {
+    /* Existing background color - remove or comment out if you want only the image */
+    /* background-color: #fcfcfc; */ 
+    padding: 120px 0 80px;
+
+    /* --- NEW BACKGROUND IMAGE STYLES --- */
+    background-image: url('Abc.jpg'); /* <-- IMPORTANT: Name your image file this! */
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-position: center center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    position: relative; /* Needed for overlay */
+    color: var(--white); /* Change text color for better contrast */
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Add text shadow for readability */
+}
+
+/* --- OPTIONAL: Add an overlay for better text readability --- */
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Dark overlay */
+    z-index: 1; /* Place overlay above background image, below content */
+}
+
+/* Ensure hero content is above the overlay */
+#hero .container {
+    position: relative;
+    z-index: 2; 
+}
+
+/* Adjust specific text colors for readability over the dark background */
+#hero h2,
+#hero p {
+    color: var(--white); /* Ensure text is white */
+}
+
+/* Adjust the hero image placeholder since we now have a real background */
+.hero-image {
+    /* You can remove or comment out these if you don't want the yellow box anymore */
+    /* background-color: var(--primary-color);
+    border-radius: 15px;
+    min-height: 350px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, var(--primary-color), #f7d40f); */
+    
+    /* Instead, you might want a simple transparent space or remove this div altogether */
+    background: none; /* Remove any background */
+    box-shadow: none; /* Remove any shadow */
+    min-height: 0; /* Remove minimum height if not needed */
+}
+
+/* Also remove the banana illustration if you're replacing it with a photo */
+.banana-illustration::after {
+    content: none; 
+}
+
+/* Adjust the text color of the primary button if it's hard to read over the image */
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--secondary-color); /* Keep dark text for primary button */
+    /* You might want to adjust its shadow to stand out more */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+#benefits {
+    background-color: #fff;
+    text-align: center;
+}
+
+#recipes {
+    background-color: #f9f9f9;
+}
+
+h2, h3 {
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+}
+
+h3 {
+    font-size: 2.5em;
+    text-align: center;
+}
+
+/* --- Hero Section Specific Styles --- */
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.hero-text {
+    max-width: 50%;
+}
+
+.hero-text h2 {
+    font-size: 3.5em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-image {
+    width: 45%;
+    /* Styling the placeholder image */
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    min-height: 350px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    /* Adding a subtle gradient or pattern for a cooler look */
+    background: linear-gradient(135deg, var(--primary-color), #f7d40f);
+    position: relative;
+    /* This class will be targeted for animation */
+    opacity: 1; 
+    transform: translateX(0);
+}
+
+/* Optional: Adding a peel effect to the banana illustration placeholder */
+.banana-illustration::after {
+    content: '🍌';
+    font-size: 8em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+}
+
+/* --- Benefits Section Specific Styles --- */
+.benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.benefit-card {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    transition: transform 0.3s var(--timing-function), box-shadow 0.3s;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-card h4 {
+    color: var(--accent-color);
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+/* --- Recipes Section Specific Styles --- */
+.recipe-list {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.recipe-card {
+    width: 350px;
+    background-color: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s var(--timing-function);
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-image {
+    height: 200px;
+    width: 100%;
+    background-color: #ccc; /* Placeholder color */
+    background-size: cover;
+    background-position: center;
+    /* Adding a subtle hover effect to the image itself */
+    transition: transform 0.5s var(--timing-function);
+}
+
+.recipe-card:hover .recipe-image {
+    transform: scale(1.05);
+}
+
+.recipe-card h4 {
+    padding: 20px 20px 10px;
+    color: var(--secondary-color);
+    font-size: 1.5em;
+}
+
+.recipe-card p {
+    padding: 0 20px 20px;
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--secondary-color);
+    color: #aeb5be;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+
+/* ------------------------------------------- */
+/* --- ANIMATION STYLES (The Cool Part) --- */
+/* ------------------------------------------- */
+
+/* Initial state for elements that will animate in */
+.animate-on-scroll .hero-text,
+.animate-on-scroll .hero-image,
+.animate-on-scroll .benefit-card,
+.animate-on-scroll .recipe-card {
+    /* Set initial state: invisible and slightly offset */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s var(--timing-function);
+}
+
+/* Specific initial state for Hero image (comes from the side) */
+#hero .hero-image {
+    transform: translateX(40px);
+}
+
+/* Specific initial state for Hero text (comes from the side) */
+#hero .hero-text {
+    transform: translateX(-40px);
+}
+
+/* 'Active' state: when the element is in the viewport, this class is added by JavaScript */
+.animate-on-scroll.in-view .hero-text,
+.animate-on-scroll.in-view .hero-image,
+.animate-on-scroll.in-view .benefit-card,
+.animate-on-scroll.in-view .recipe-card {
+    /* Final state: visible and in original position */
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* Adding staggered delay for grid elements (Benefits) */
+/* This makes them pop in one after the other */
+#benefits.in-view .benefit-card:nth-child(1) { transition-delay: 0s; }
+#benefits.in-view .benefit-card:nth-child(2) { transition-delay: 0.15s; }
+#benefits.in-view .benefit-card:nth-child(3) { transition-delay: 0.3s; }
+
+/* Adding staggered delay for list elements (Recipes) */
+#recipes.in-view .recipe-card:nth-child(1) { transition-delay: 0s; }
+#recipes.in-view .recipe-card:nth-child(2) { transition-delay: 0.15s; }
+
+
+/* --- Media Queries for Responsiveness (Good UI) --- */
+@media (max-width: 900px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text, .hero-image {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .benefit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .recipe-list {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+/* --- Reviews Section Specific Styles --- */
+#reviews {
+    background-color: #ffeeb2; /* Lighter banana yellow background */
+    text-align: center;
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.review-card {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0; /* Hidden initially for animation */
+    transform: scale(0.9); /* Smaller initially */
+    transition: all 0.6s var(--timing-function);
+}
+
+.review-card.revealed {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.review-card .review-text {
+    font-style: italic;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.review-card .review-author {
+    font-weight: 600;
+    color: var(--accent-color);
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+/* Media Query for Reviews */
+@media (max-width: 900px) {
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
